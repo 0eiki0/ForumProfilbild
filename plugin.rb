@@ -2,7 +2,7 @@
 
 # name: discourse-minecraft-skin-avatar
 # about: Schlägt Usern ihren Minecraft-Kopf (via mineskin.eu) als Profilbild vor
-# version: 1.1.1
+# version: 1.2.0
 # authors: Marcel Eikmeier
 # url: https://github.com/0eiki0/forumprofilbild
 # required_version: 3.3.0

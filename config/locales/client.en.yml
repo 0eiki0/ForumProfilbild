@@ -7,6 +7,7 @@ en:
       upload_own: "Upload my own picture"
       dismiss: "No, thanks"
       applied: "Your profile picture has been updated!"
-      choice_label: "Minecraft skin (%{name})"
+      choice_label_helm: "Minecraft helm (%{name})"
+      choice_label_avatar: "Minecraft avatar (%{name})"
       choice_apply: "Use"
       choice_active: "In use"

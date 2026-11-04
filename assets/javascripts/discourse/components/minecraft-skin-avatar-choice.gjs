@@ -1,5 +1,6 @@
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
+import { concat, fn } from "@ember/helper";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 import { modifier } from "ember-modifier";
@@ -14,7 +15,7 @@ const MODAL_BODY_SELECTOR = ".avatar-selector-modal .d-modal__body";
 // Discourse bietet im Profilbild-Fenster keinen Plugin-Outlet. Diese Komponente
 // läuft daher im Hintergrund mit, erkennt über den Modal-Service, wann das
 // Profilbild-Fenster des eigenen Accounts offen ist, und rendert dann per
-// in-element eine zusätzliche "Minecraft-Skin"-Zeile in das Fenster.
+// in-element je eine Zeile pro Skin-Variante (Helm/Avatar) in das Fenster.
 export default class MinecraftSkinAvatarChoice extends Component {
   @service currentUser;
   @service modal;
@@ -63,10 +64,13 @@ export default class MinecraftSkinAvatarChoice extends Component {
   }
 
   @action
-  async apply() {
+  async apply(variant) {
     this.saving = true;
     try {
-      await ajax("/minecraft-skin-avatar/apply", { type: "POST" });
+      await ajax("/minecraft-skin-avatar/apply", {
+        type: "POST",
+        data: { variant },
+      });
       this.modal.close();
       window.location.reload();
     } catch (e) {
@@ -80,38 +84,45 @@ export default class MinecraftSkinAvatarChoice extends Component {
       <span hidden {{this.watchModal}}></span>
       {{#if this.target}}
         {{#in-element this.target insertBefore=null}}
-          <div class="avatar-choice avatar-choice--minecraft">
-            {{! leere erste Spalte, damit die Zeile mit den Radio-Buttons fluchtet }}
-            <span class="minecraft-skin-avatar-choice__spacer"></span>
-            <label class="radio">
-              <img
-                class="avatar minecraft-skin-avatar-choice__preview"
-                src={{this.info.url}}
-                alt={{this.info.name}}
-                width="48"
-                height="48"
-              />
-              <span>
-                {{i18n
-                  "minecraft_skin_avatar.choice_label"
-                  name=this.info.name
-                }}
-              </span>
-            </label>
-            {{#if this.info.active}}
-              <span class="minecraft-skin-avatar-choice__active">
-                {{i18n "minecraft_skin_avatar.choice_active"}}
-              </span>
-            {{else}}
-              <DButton
-                @action={{this.apply}}
-                @label="minecraft_skin_avatar.choice_apply"
-                @icon="check"
-                @disabled={{this.saving}}
-                class="btn-default minecraft-skin-avatar-choice__apply"
-              />
-            {{/if}}
-          </div>
+          {{#each this.info.variants as |variant|}}
+            <div
+              class={{concat
+                "avatar-choice avatar-choice--minecraft avatar-choice--minecraft-"
+                variant.id
+              }}
+            >
+              {{! leere erste Spalte, damit die Zeile mit den Radio-Buttons fluchtet }}
+              <span class="minecraft-skin-avatar-choice__spacer"></span>
+              <label class="radio">
+                <img
+                  class="avatar minecraft-skin-avatar-choice__preview"
+                  src={{variant.url}}
+                  alt={{this.info.name}}
+                  width="48"
+                  height="48"
+                />
+                <span>
+                  {{i18n
+                    (concat "minecraft_skin_avatar.choice_label_" variant.id)
+                    name=this.info.name
+                  }}
+                </span>
+              </label>
+              {{#if variant.active}}
+                <span class="minecraft-skin-avatar-choice__active">
+                  {{i18n "minecraft_skin_avatar.choice_active"}}
+                </span>
+              {{else}}
+                <DButton
+                  @action={{fn this.apply variant.id}}
+                  @label="minecraft_skin_avatar.choice_apply"
+                  @icon="check"
+                  @disabled={{this.saving}}
+                  class="btn-default minecraft-skin-avatar-choice__apply"
+                />
+              {{/if}}
+            </div>
+          {{/each}}
         {{/in-element}}
       {{/if}}
     {{/if}}

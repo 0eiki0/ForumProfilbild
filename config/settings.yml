@@ -6,3 +6,5 @@ plugins:
     default: "Minecraft-Name"
   minecraft_skin_avatar_url_template:
     default: "https://mineskin.eu/helm/{name}.png"
+  minecraft_skin_avatar_avatar_url_template:
+    default: "https://mineskin.eu/avatar/{name}.png"

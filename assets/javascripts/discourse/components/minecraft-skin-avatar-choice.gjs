@@ -81,16 +81,23 @@ export default class MinecraftSkinAvatarChoice extends Component {
       {{#if this.target}}
         {{#in-element this.target insertBefore=null}}
           <div class="avatar-choice avatar-choice--minecraft">
-            <img
-              class="avatar minecraft-skin-avatar-choice__preview"
-              src={{this.info.url}}
-              alt={{this.info.name}}
-              width="45"
-              height="45"
-            />
-            <span class="minecraft-skin-avatar-choice__label">
-              {{i18n "minecraft_skin_avatar.choice_label" name=this.info.name}}
-            </span>
+            {{! leere erste Spalte, damit die Zeile mit den Radio-Buttons fluchtet }}
+            <span class="minecraft-skin-avatar-choice__spacer"></span>
+            <label class="radio">
+              <img
+                class="avatar minecraft-skin-avatar-choice__preview"
+                src={{this.info.url}}
+                alt={{this.info.name}}
+                width="48"
+                height="48"
+              />
+              <span>
+                {{i18n
+                  "minecraft_skin_avatar.choice_label"
+                  name=this.info.name
+                }}
+              </span>
+            </label>
             {{#if this.info.active}}
               <span class="minecraft-skin-avatar-choice__active">
                 {{i18n "minecraft_skin_avatar.choice_active"}}

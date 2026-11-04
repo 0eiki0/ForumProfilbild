@@ -1,0 +1,9 @@
+en:
+  js:
+    minecraft_skin_avatar:
+      title: "Use your Minecraft head as profile picture?"
+      description: "We found the skin of %{name}. You can use it as your profile picture or upload your own image."
+      apply: "Use as profile picture"
+      upload_own: "Upload my own picture"
+      dismiss: "No, thanks"
+      applied: "Your profile picture has been updated!"

@@ -1,0 +1,9 @@
+de:
+  js:
+    minecraft_skin_avatar:
+      title: "Deinen Minecraft-Kopf als Profilbild verwenden?"
+      description: "Wir haben den Skin von %{name} gefunden. Du kannst ihn als Profilbild übernehmen oder ein eigenes Bild hochladen."
+      apply: "Als Profilbild übernehmen"
+      upload_own: "Eigenes Bild hochladen"
+      dismiss: "Nein, danke"
+      applied: "Dein Profilbild wurde aktualisiert!"

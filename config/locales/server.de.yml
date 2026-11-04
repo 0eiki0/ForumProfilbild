@@ -1,0 +1,9 @@
+de:
+  site_settings:
+    minecraft_skin_avatar_enabled: "Minecraft-Skin als Profilbild vorschlagen"
+    minecraft_skin_avatar_user_field: "Exakter Name des Benutzerfelds, in dem der Minecraft-Name steht"
+    minecraft_skin_avatar_url_template: "URL des Kopf-Bildes. {name} wird durch den Minecraft-Namen ersetzt (z. B. https://mineskin.eu/helm/{name}/256.png für größere Bilder)"
+  minecraft_skin_avatar:
+    errors:
+      no_name: "Du hast keinen gültigen Minecraft-Namen in deinem Profil hinterlegt."
+      download_failed: "Der Skin konnte nicht von mineskin.eu geladen werden. Bitte versuche es später erneut."

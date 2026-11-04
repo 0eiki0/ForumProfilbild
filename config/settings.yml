@@ -1,0 +1,8 @@
+plugins:
+  minecraft_skin_avatar_enabled:
+    default: true
+    client: true
+  minecraft_skin_avatar_user_field:
+    default: "Minecraft-Name"
+  minecraft_skin_avatar_url_template:
+    default: "https://mineskin.eu/helm/{name}.png"

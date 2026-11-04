@@ -1,0 +1,9 @@
+en:
+  site_settings:
+    minecraft_skin_avatar_enabled: "Suggest the user's Minecraft head as profile picture"
+    minecraft_skin_avatar_user_field: "Exact name of the user field containing the Minecraft name"
+    minecraft_skin_avatar_url_template: "URL of the head image. {name} is replaced with the Minecraft name"
+  minecraft_skin_avatar:
+    errors:
+      no_name: "You have not entered a valid Minecraft name in your profile."
+      download_failed: "The skin could not be loaded from mineskin.eu. Please try again later."

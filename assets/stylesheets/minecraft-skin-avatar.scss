@@ -1,0 +1,48 @@
+.minecraft-skin-banner {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 1em 0;
+  padding: 1em;
+  border: 1px solid var(--primary-low);
+  border-radius: 8px;
+  background: var(--tertiary-very-low, var(--primary-very-low));
+
+  &__preview {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    image-rendering: pixelated;
+    background: var(--primary-low);
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+
+    h3 {
+      margin: 0 0 0.25em;
+    }
+
+    p {
+      margin: 0 0 0.75em;
+      color: var(--primary-high);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+}
+
+.mobile-view .minecraft-skin-banner {
+  flex-direction: column;
+  text-align: center;
+
+  &__actions {
+    justify-content: center;
+  }
+}

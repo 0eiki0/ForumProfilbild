@@ -26,6 +26,22 @@ module ::MinecraftSkinAvatar
     SiteSetting.minecraft_skin_avatar_url_template.gsub("{name}", CGI.escape(name))
   end
 
+  # Daten für die Zeile im Profilbild-Fenster (immer, sobald ein gültiger Name existiert)
+  def self.avatar_info_for(user)
+    return nil unless SiteSetting.minecraft_skin_avatar_enabled
+
+    name = minecraft_name_for(user)
+    return nil if name.blank?
+
+    fields = user.custom_fields
+    active =
+      user.uploaded_avatar_id.present? &&
+        user.uploaded_avatar_id.to_s == fields[APPLIED_UPLOAD_FIELD].to_s &&
+        fields[APPLIED_FIELD].to_s.casecmp?(name)
+
+    { name: name, url: skin_url(name), active: active }
+  end
+
   # Gibt { name:, url: } zurück, wenn dem User der Skin vorgeschlagen werden soll
   def self.suggestion_for(user)
     return nil unless SiteSetting.minecraft_skin_avatar_enabled

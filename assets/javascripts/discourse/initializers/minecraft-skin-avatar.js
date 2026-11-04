@@ -1,4 +1,5 @@
 import { apiInitializer } from "discourse/lib/api";
+import MinecraftSkinAvatarChoice from "../components/minecraft-skin-avatar-choice";
 import MinecraftSkinBanner from "../components/minecraft-skin-banner";
 
 export default apiInitializer((api) => {
@@ -8,4 +9,5 @@ export default apiInitializer((api) => {
   }
 
   api.renderInOutlet("above-main-container", MinecraftSkinBanner);
+  api.renderInOutlet("above-main-container", MinecraftSkinAvatarChoice);
 });

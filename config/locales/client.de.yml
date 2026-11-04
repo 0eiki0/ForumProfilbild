@@ -7,3 +7,6 @@ de:
       upload_own: "Eigenes Bild hochladen"
       dismiss: "Nein, danke"
       applied: "Dein Profilbild wurde aktualisiert!"
+      choice_label: "Minecraft-Skin (%{name})"
+      choice_apply: "Übernehmen"
+      choice_active: "Wird verwendet"
